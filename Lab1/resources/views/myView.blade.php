@@ -22,26 +22,35 @@
         background-color: #718096;
     }
     .main-part{
-
+        align-items: center;
         background-color: #cbd5e0;
         height: 90vh;
     }
-    .main-part h1 {
+    .main-part h1{
         padding-top: 2rem;
         font-weight: bolder;
-        text-shadow: blueviolet;
         text-align: center;
+    }
+    .main-part h2 {
+        margin-top: 50px;
+        font-weight: bolder;
+        text-align: center;
+    }
+    .col-width-45-per{
+        width: 45%;
+       
+    }
+    .col-width-93-per{
+        width: 93%;
     }
     .text-column {
         border-radius: 10px;
         background-color: rgba(0,0,0,.15);
         padding: 2rem;
-        margin: 5px 15px;
-        width: 47%;
+        margin: 40px 15px 0px;
         height: 25vh;
         float: left;
-    
-        
+
     }
     .text-style {
         text-align: justify;
@@ -56,8 +65,14 @@
     </nav>
 
     <div class = "container main-part">
-        <h1>Welcome!</h1>
-        <div class = "text-column">
+
+        <div class = "col">
+            <h1>Welcome! </h1>
+            <h2>My Name is Yuriy and I`m studying at BSNU, 308 group</h2>
+        </div>
+       
+        <div class = "col">
+        <div class = "text-column col-width-45-per">
             <p class = "text-style">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Architecto quidem vitae aliquid iusto fugit, 
@@ -65,13 +80,22 @@
                 necessitatibus ea facilis corrupti. Quaerat, quos!
             </p>
         </div>
-        <div class = "text-column">
+        <div class = "text-column col-width-45-per">
             <p class = "text-style">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Architecto quidem vitae aliquid iusto fugit, 
                 molestiae beatae in aspernatur eos tenetur error ullam odit commodi,
                 necessitatibus ea facilis corrupti. Quaerat, quos!
             </p>
+        </div>
+        <div class = "text-column col-width-93-per">
+            <p class = "text-style">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Architecto quidem vitae aliquid iusto fugit, 
+                molestiae beatae in aspernatur eos tenetur error ullam odit commodi,
+                necessitatibus ea facilis corrupti. Quaerat, quos!
+            </p>
+        </div>
         </div>
     </div>
 

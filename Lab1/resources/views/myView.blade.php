@@ -47,12 +47,13 @@
         border-radius: 10px;
         background-color: rgba(0,0,0,.15);
         padding: 2rem;
-        margin: 40px 15px 0px;
+        margin: 40px 15px 1px;
         height: 25vh;
         float: left;
 
     }
     .text-style {
+        text-overflow: clip;
         text-align: justify;
         text-indent: 14pt;
         font-size: 18pt;
@@ -75,17 +76,14 @@
         <div class = "text-column col-width-45-per">
             <p class = "text-style">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Architecto quidem vitae aliquid iusto fugit, 
-                molestiae beatae in aspernatur eos tenetur error ullam odit commodi,
-                necessitatibus ea facilis corrupti. Quaerat, quos!
+                Architecto quidem vitae aliquid iusto fugit
             </p>
         </div>
         <div class = "text-column col-width-45-per">
             <p class = "text-style">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Architecto quidem vitae aliquid iusto fugit, 
-                molestiae beatae in aspernatur eos tenetur error ullam odit commodi,
-                necessitatibus ea facilis corrupti. Quaerat, quos!
+                molestiae beatae
             </p>
         </div>
         <div class = "text-column col-width-93-per">

@@ -62,7 +62,7 @@
                 <a class="nav-link h5" href="/">Home</a>
              </li>
              <li class="nav-item @yield('nav-recip-active')"> 
-                 <a class="nav-link h5" href="/recipes">Recipes</a>
+                 <a class="nav-link h5" href="/patients">Patients</a>
              </li>
             <li class="nav-item @yield('nav-about-active')">
                  <a class="nav-link h5" href="/about">About</a>

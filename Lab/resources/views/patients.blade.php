@@ -21,25 +21,17 @@
                         <th scope="col">Recipes</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                            <td>Mark Shield</td>
-                            <td>Otto Donk</td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                            <td>Jacob Strauss</td>
-                            <td>Thornton Kol</td>
-                            <td>...</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                            <td>Larry Dank</td>
-                            <td>Ken Luht</td>
-                            <td>...</td>
-                        </tr>
+                        <?php $index = 1; ?>
+                        <?php foreach ($patients as $row): ?>
+                            <tr>
+                            <th scope="row"><?php echo $index++ ?></th>
+                                <td><?php echo $row->getFullname(); ?></td>
+                                <td><?php echo $row->getDoctorName(); ?></td>
+                                <td><?php echo print_r($row->getRecipes(), true) ?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

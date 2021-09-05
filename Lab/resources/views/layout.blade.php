@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-    <title>My Laravel Lab</title>
+    <title>@yield ("app-title")</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,6 +16,7 @@
     </style>
 
     <style>
+
     body {
         box-sizing: border-box;
         font-family: 'Nunito', sans-serif;
@@ -36,65 +37,48 @@
         font-weight: bolder;
         text-align: center;
     }
-    .col-width-45-per{
-        width: 45%;
-       
-    }
-    .col-width-93-per{
-        width: 93%;
-    }
-    .text-column {
-        border-radius: 10px;
-        background-color: rgba(0,0,0,.15);
-        padding: 2rem;
-        margin: 40px 15px 1px;
-        height: 25vh;
-        float: left;
-
-    }
-    .text-style {
-        text-overflow: clip;
-        text-align: justify;
-        text-indent: 14pt;
+    .main-part p {
         font-size: 18pt;
+        text-indent: 5pt;
     }
+    .main-part td {
+        border-color: wheat;
+        font-size: 16pt;
+    }
+    .main-part th {
+        border-color: wheat;
+        font-size: 16pt;
+    }
+ 
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Hello</a>
+        <a class="navbar-brand" href=""><h3>Medicine recipes</h3></a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+             <li class="nav-item @yield('nav-home-active')">
+                <a class="nav-link h5" href="/">Home</a>
+             </li>
+             <li class="nav-item @yield('nav-recip-active')"> 
+                 <a class="nav-link h5" href="/recipes">Recipes</a>
+             </li>
+            <li class="nav-item @yield('nav-about-active')">
+                 <a class="nav-link h5" href="/about">About</a>
+             </li>
+        </ul>
+    </div>
     </nav>
 
     <div class = "container main-part">
 
         <div class = "col">
-            <h1>Welcome! </h1>
-            <h2>My Name is Yuriy and I`m studying at BSNU, 308 group</h2>
+            <h1>@yield ("page-title")</h1>
         </div>
+
+        @yield ("page-content")
        
-        <div class = "col">
-        <div class = "text-column col-width-45-per">
-            <p class = "text-style">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Architecto quidem vitae aliquid iusto fugit
-            </p>
-        </div>
-        <div class = "text-column col-width-45-per">
-            <p class = "text-style">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Architecto quidem vitae aliquid iusto fugit, 
-                molestiae beatae
-            </p>
-        </div>
-        <div class = "text-column col-width-93-per">
-            <p class = "text-style">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Architecto quidem vitae aliquid iusto fugit, 
-                molestiae beatae in aspernatur eos tenetur error ullam odit commodi,
-                necessitatibus ea facilis corrupti. Quaerat, quos!
-            </p>
-        </div>
-        </div>
     </div>
 
 </body>

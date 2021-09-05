@@ -29,7 +29,7 @@
                             <th scope="row"><?php echo $index++ ?></th>
                                 <td><?php echo $row->getFullname(); ?></td>
                                 <td><?php echo $row->getDoctorName(); ?></td>
-                                <td><?php echo print_r($row->getRecipes(), true) ?></td>
+                                <td><?php echo print_r($row->getRecipesCount(), true) ?> recipes</td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

@@ -9,11 +9,11 @@ class Patient
     private $doctor;
     private $recipes;
 
-    public function __construct($fullname, $doctor)
+    public function __construct($fullname, $doctor, $recipes = null)
     {
         $this->fullname = $fullname;
-        $this->doctor = $fullname;
-        $this->recipes = [];
+        $this->doctor = $doctor;
+        $this->recipes = $recipes;
     }
 
     public function getFullname () {
@@ -22,6 +22,10 @@ class Patient
 
     public function getDoctorName () {
         return $this->doctor;
+    }
+
+    public function getRecipesCount() {
+        return count($this->recipes);
     }
 
     public function getRecipes () {

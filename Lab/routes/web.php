@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PatientsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,8 @@ Route::get('/', [PageController::class, 'home']);
 
 Route::get('/about',  [PageController::class, 'about']);
 
-Route::get('/patients' ,  [PageController::class, 'patients']);
+Route::get('/patients/index' ,  [PatientsController::class, 'patients']);
+
+Route::get('/patients/json', [PatientsController::class, 'patientsJson']);
+
+Route::get('/patients/recipes/{id}', [PatientsController::class, 'showPatientRecipes']);

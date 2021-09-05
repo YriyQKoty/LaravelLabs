@@ -26,10 +26,11 @@
                         <?php $index = 1; ?>
                         <?php foreach ($patients as $row): ?>
                             <tr>
-                            <th scope="row"><?php echo $index++ ?></th>
-                                <td><?php echo $row->getFullname(); ?></td>
-                                <td><?php echo $row->getDoctorName(); ?></td>
-                                <td><?php echo print_r($row->getRecipesCount(), true) ?> recipes</td>
+                            <th scope="row"><?php echo $index?></th>
+                                <td><?php echo $row->fullname; ?></td>
+                                <td><?php echo $row->doctor; ?></td>
+                                <td> <a href="/patients/recipes/<?php echo $index?>">Show recipes</a></td>
+                                <?php  $index++ ?>
                             </tr>
                         <?php endforeach ?>
                     </tbody>

@@ -1,0 +1,33 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    background-color: #718096;
+}
+.main-part{
+    align-items: center;
+    background-color: #cbd5e0;
+    height: 90vh;
+}
+.main-part h1{
+    padding-top: 2rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.main-part h2 {
+    margin-top: 50px;
+    font-weight: bolder;
+    text-align: center;
+}
+.main-part p {
+    font-size: 18pt;
+    text-indent: 5pt;
+}
+.main-part td {
+    border-color: wheat;
+    font-size: 16pt;
+}
+.main-part th {
+    border-color: wheat;
+    font-size: 16pt;
+}
+

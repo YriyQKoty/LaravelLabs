@@ -21,6 +21,13 @@ Route::get('/about',  [PageController::class, 'about']);
 
 Route::get('/patients/index' ,  [PatientsController::class, 'patients']);
 
+Route::get('/patients/index/{id}/edit', [PatientsController::class, 'edit']);
+Route::patch('/patients/index/{id}', [PatientsController::class, 'update']);
+
+Route::get('/patients/create', [PatientsController::class, 'create']);
+
+Route::post('/patients', [PatientsController::class, 'store']);
+
 Route::get('/patients/json', [PatientsController::class, 'patientsJson']);
 
 Route::get('/patients/recipes/{id}', [PatientsController::class, 'showPatientRecipes']);

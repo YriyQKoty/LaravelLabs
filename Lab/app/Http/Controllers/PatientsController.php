@@ -18,6 +18,41 @@ class PatientsController extends Controller
 
     }
 
+    public function create() {
+        return view("patients/create");
+    }
+
+    public function store() {
+
+        $patient = new Patient();
+
+        $patient->fullname = request("fullname");
+        $patient->doctor = request("doctorName");
+
+        $patient->save();
+
+        return redirect("/patients/index");
+    }
+
+    public function edit($id) {
+        $patient = Patient::find($id);
+
+        return view("patients/edit", [
+            "patient" => $patient,
+        ]);
+    }
+
+    public function update($id) {
+        $patient = Patient::find($id);
+
+        $patient->fullname = request("fullname");
+        $patient->doctor = request("doctorName");
+
+        $patient->save();
+
+        return redirect("patients/index");
+    }
+
     public function patientsJson() {
         return Patient::all();
     }

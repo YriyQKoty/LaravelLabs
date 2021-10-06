@@ -19,12 +19,16 @@ Route::get('/', [PageController::class, 'home']);
 
 Route::get('/about',  [PageController::class, 'about']);
 
+
 Route::get('/patients/index' ,  [PatientsController::class, 'patients']);
+
+Route::get('/patients/create', [PatientsController::class, 'create']);
 
 Route::get('/patients/index/{id}/edit', [PatientsController::class, 'edit']);
 Route::patch('/patients/index/{id}', [PatientsController::class, 'update']);
 
-Route::get('/patients/create', [PatientsController::class, 'create']);
+Route::delete('/patients/index/{id}/delete', [PatientsController::class, 'destroy']);
+
 
 Route::post('/patients', [PatientsController::class, 'store']);
 

@@ -24,18 +24,16 @@ class PatientsController extends Controller
 
     public function store() {
 
-        $patient = new Patient();
-
-        $patient->fullname = request("fullname");
-        $patient->doctor = request("doctorName");
-
-        $patient->save();
+        Patient::create([
+            'fullname' => request("fullname"),
+            'doctor' => request("doctorName")
+        ]);
 
         return redirect("/patients/index");
     }
 
     public function edit($id) {
-        $patient = Patient::find($id);
+        $patient = Patient::findOrFail($id);
 
         return view("patients/edit", [
             "patient" => $patient,
@@ -50,6 +48,13 @@ class PatientsController extends Controller
 
         $patient->save();
 
+        return redirect("patients/index");
+    }
+
+    public function destroy($id) {
+        $patient = Patient::find($id);
+
+        $patient->delete();
         return redirect("patients/index");
     }
 

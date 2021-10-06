@@ -9,7 +9,7 @@
         <div class = "col">
             <form method="post" action="/patients/index/{{ $patient->id }}">
                 @csrf
-                
+
                 {{ method_field("patch") }}
                 <div class = "form-group text">
                     <strong><label for="fullname">Fullname</label></strong>
@@ -19,7 +19,10 @@
                 <strong><label for="doctorName">Doctor name</label></strong>
                     <input type="text" id = "doctorName" name="doctorName" class = "form-control" value="{{ $patient->doctor}}">
                 </div>
-                <button type="submit" class = "btn btn-outline-dark float-right">Update patient</button>
+                <button type="submit" class = "btn btn-outline-dark float-right ml-5">Update</button>
             </form>
+
+            
+          
            
 @endsection

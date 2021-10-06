@@ -20,7 +20,7 @@
                         <th scope="col">Fullname</th>
                         <th scope="col">Doctor</th>
                         <th scope="col">Recipes</th>
-                        <th scope="col" colspan = "2" class="text-center">Management</th>
+                        <th scope="col" colspan="2" class="text-center">Management</th>
                 
                         </tr>
                     </thead>
@@ -30,16 +30,56 @@
                         <?php foreach ($patients as $row): ?>
                             <tr>
                             <th scope="row"><?php echo $index?></th>
-                                <td><?php echo $row->fullname; ?></td>
+                                <td name="{{ $row->fullname }}"><?php echo $row->fullname; ?></td>
                                 <td><?php echo $row->doctor; ?></td>
-                                <td> <a href="/patients/recipes/<?php echo $index?>" class = "btn-outline-success">Show</a></td>
-                                <td> <a href="" class = "btn-outline-danger">Remove</a></td>
-                                <td> <a href="/patients/index/{{ $row->id }}/edit" class = "btn-outline-primary">Edit</a></td>
+                                <td> <a href="/patients/recipes/<?php echo $index?>" class = "btn btn-outline-success">Show</a></td>
+                                <td class="text-center"> <a href="/patients/index/{{ $row->id }}/edit" class = "btn btn-outline-primary">Edit</a></td>
+                                <th class="text-center"> <a id="{{ $row->id }}" class = "btn btn-outline-danger">Delete</a></td>
                                 <?php  $index++ ?>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
+
             </div>
+        </div>
+
+        <script>
+        $(document).ready(function () {
+            $('th a:nth-child(1n)').on('click', function (e) {
+                const patientId = $(this).attr('id');
+                bootbox.confirm({
+                    message: `Do you want to delete patient №${patientId}?`,
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-secondary'
+                        }
+                    },
+                    callback: function (result) {
+                        if (!result) {
+                            return;
+                        }
+                        $.ajax({
+                            url: '/patients/index/' + patientId + '/delete',
+                            type: 'post',
+                            data: {
+                                _method: 'delete',
+                                _token: "{!! csrf_token() !!}"
+                            },
+                            success: function () {
+                                location.href = '/patients/index'
+                            }
+                        })
+                    }
+                });
+            });
+        });
+    </script>
+
            
 @endsection

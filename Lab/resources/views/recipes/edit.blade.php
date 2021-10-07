@@ -11,41 +11,32 @@
             @csrf
 
             {{ method_field("patch") }}
-                <div class = "form-group text">
-                    <strong><label for="description">Description</label></strong>
-                    <input type="text" id = "description" name="description" value="{{ old('description') ? old('description') : $recipe->description }}"
-                    class = "form-control {{ $errors->has('description') ? 'is-invalid':'' }}" placeholder="Enter medicine description..." >
-                    <small class = "form-text text-danger">
-                        <ul>
-                            @foreach($errors->get('description') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </small>
+                <div class = "form-group text"> 
+                    @include('includes/input', [
+                        'fieldId' => "description",
+                        'fieldName' => "description",
+                        'labelText' => "Description",
+                        'value' => $recipe->description,
+                        'placeHolderText' => "Enter medicine description..."
+                        ])
                 </div>
                 <div class = "form-group">
-                <strong><label for="type">Type</label></strong>
-                    <input type="text" id = "type" name="type" value="{{ old('type') ? old('type') : $recipe->type }}"
-                     class = "form-control {{ $errors->has('type') ? 'is-invalid':'' }}" placeholder="Enter medicine type...">
-                    <small class = "form-text text-danger">
-                        <ul>
-                            @foreach($errors->get('type') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </small>
+                    @include('includes/input', [
+                        'fieldId' => "type",
+                        'fieldName' => "type",
+                        'labelText' => "Type",
+                        'value' => $recipe->type,
+                        'placeHolderText' => "Enter medicine type..."
+                        ])
                 </div>
                 <div class = "form-group">
-                <strong><label for="amount">Amount</label></strong>
-                    <input type="number" id = "amount" name="amount" value="{{ old('amount') ? old('amount') : $recipe->amount }}"
-                    class = "form-control {{ $errors->has('amount') ? 'is-invalid':'' }}" placeholder="Enter amount...">
-                    <small class = "form-text text-danger">
-                        <ul>
-                            @foreach($errors->get('amount') as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </small>
+                    @include('includes/input', [
+                        'fieldId' => "amount",
+                        'fieldName' => "amount",
+                        'labelText' => "Amount",
+                        'value' => $recipe->amount,
+                        'placeHolderText' => "Enter amount..."
+                        ])
                 </div>
                 <button type="submit" class = "btn btn-outline-dark float-right ml-5">Update</button>
             </form>

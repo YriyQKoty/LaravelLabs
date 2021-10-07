@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Model\Rules;
 
+use DB;
+
 use App\Models\Recipe;
 
 class PatientsController extends Controller
@@ -58,7 +60,7 @@ class PatientsController extends Controller
 
     public function destroy($id) {
         $patient = Patient::find($id);
-
+        
         $patient->delete();
         return redirect("patients/index");
     }

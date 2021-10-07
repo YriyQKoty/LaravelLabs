@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('fullname', 50);
             $table->string('doctor', 50);
             $table->timestamps();
+
         });
     }
 

@@ -18,11 +18,15 @@ class RecipesController extends Controller
     }
 
     public function store() {
+
         $pat_id = Route::current()->parameter('id');
+
+        $data = RulesController::onValidate(RulesController::getRules()['recipeRules']);
+
         Recipe::create([
-            'description' => request("desc"),
-            'type' => request("type"),
-            'amount' => request("amount"),
+            'description' => $data['description'],
+            'type' => $data['type'],
+            'amount' => $data['amount'],
             'patient_id' => $pat_id,
         ]);
 
@@ -30,23 +34,43 @@ class RecipesController extends Controller
     }
 
     public function edit($id) {
-    
+        $recipe = Recipe::findOrFail($id);
+
+        return view("recipes/edit", [
+            'recipe' => $recipe,
+        ]);
     }
 
     public function update($id) {
-      
+        $recipe = Recipe::find($id);
+
+        $data = RulesController::onValidate(RulesController::getRules()['recipeRules']);
+
+        $recipe->description = $data['description'];
+        $recipe->type = $data['type'];
+        $recipe->amount = $data['amount'];
+
+        $recipe->save();
+
+        return redirect("/recipes/$recipe->patient_id");
     }
 
     public function destroy($id) {
-       
+        $recipe = Recipe::find($id);
+
+        $pat_id = $recipe->patient_id;
+
+        $recipe->delete();
+        return redirect("/recipes/$pat_id");
     }
 
 
     public function showPatientRecipes($id) {
+      
         $patient = Patient::where('id', $id)->first();
     
         return view("recipes/recipes", [
-           'doctorName'=> $patient->doctor,
+           'doctor'=> $patient->doctor,
            'title' => 'Patient:' . $patient->fullname,
            'app_title' => $patient->fullname,
            'recipes' => Recipe::all()->where('patient_id', $id),

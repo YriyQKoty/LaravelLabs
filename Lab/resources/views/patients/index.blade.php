@@ -32,9 +32,9 @@
                             <th scope="row"><?php echo $index?></th>
                                 <td name="{{ $row->fullname }}"><?php echo $row->fullname; ?></td>
                                 <td><?php echo $row->doctor; ?></td>
-                                <td> <a href="/recipes/<?php echo $index?>" class = "btn btn-outline-success">Show</a></td>
+                                <td> <a href="/recipes/{{ $row->id }}" class = "btn btn-outline-success">Show</a></td>
                                 <td class="text-center"> <a href="/patients/index/{{ $row->id }}/edit" class = "btn btn-outline-primary">Edit</a></td>
-                                <th class="text-center"> <a id="{{ $row->id }}" class = "btn btn-outline-danger">Delete</a></td>
+                                <th class="text-center"> <a id="{{ $row->id }}" name="{{ $row->fullname }}" class = "btn btn-outline-danger">Delete</a></td>
                                 <?php  $index++ ?>
                             </tr>
                         <?php endforeach ?>
@@ -48,8 +48,9 @@
         $(document).ready(function () {
             $('th a:nth-child(1n)').on('click', function (e) {
                 const patientId = $(this).attr('id');
+                const patientName = $(this).attr('name');
                 bootbox.confirm({
-                    message: `Do you want to delete patient №${patientId}?`,
+                    message: `Do you want to delete patient ${patientName}?`,
                     buttons: {
                         confirm: {
                             label: 'Yes',

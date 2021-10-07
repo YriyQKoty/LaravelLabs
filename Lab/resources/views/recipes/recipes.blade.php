@@ -7,7 +7,7 @@
 
 @section("page-content") 
         <div class = "col">
-            <h2>Doctor: <?php echo $doctorName ?></h2>
+            <h2>Doctor: <?php echo $doctor ?></h2>
             <div class = "mt-5">
                 <a href="/recipes/create/<?php echo $patient_id ?>" style = "margin-bottom: 10px; font-size: 16pt; font-weight: bold" class="btn btn-outline-dark">Add recipe</a>
                 <table class="table table-striped table-dark ">
@@ -17,7 +17,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Type</th>
-                        <th scope="col" colspan="2">Management</th>
+                        <th scope="col" colspan="2" class="text-center">Management</th>
                         </tr>
                     </thead>
 
@@ -30,7 +30,7 @@
                                 <td><?php echo $row->amount; ?></td>
                                 <td><?php echo $row->type; ?></td>
                                 <td class="text-center"> <a href="/recipes/index/{{ $row->id }}/edit" class = "btn btn-outline-primary">Edit</a></td>
-                                <th class="text-center"> <a id="{{ $row->id }}" class = "btn btn-outline-danger">Delete</a></td>
+                                <th class="text-center"> <a id="{{ $row->id }}" name="{{ $row->description }}" class = "btn btn-outline-danger">Delete</a></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -42,8 +42,9 @@
         $(document).ready(function () {
             $('th a:nth-child(1n)').on('click', function (e) {
                 const recipeId = $(this).attr('id');
+                const recipeName = $(this).attr('name');
                 bootbox.confirm({
-                    message: `Do you want to delete recipe №${recipeId}?`,
+                    message: `Do you want to delete recipe ${recipeName}?`,
                     buttons: {
                         confirm: {
                             label: 'Yes',
@@ -66,7 +67,7 @@
                                 _token: "{!! csrf_token() !!}"
                             },
                             success: function () {
-                                location.reload(true);
+                                location.href = '/recipes/<?php echo $patient_id ?>'
                             }
                         })
                     }

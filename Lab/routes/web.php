@@ -45,6 +45,6 @@ Route::get('/recipes/create/{id}', [RecipesController::class, 'create']);
 Route::get('/recipes/index/{id}/edit', [RecipesController::class, 'edit']);
 Route::patch('/recipes/index/{id}', [RecipesController::class, 'update']);
 
-Route::get('/recipes/index/{id}/delete', [RecipesController::class, 'destroy']);
+Route::delete('/recipes/index/{id}/delete', [RecipesController::class, 'destroy']);
 
 

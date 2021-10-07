@@ -62,14 +62,4 @@ class PatientsController extends Controller
         return Patient::all();
     }
 
-    public function showPatientRecipes($id) {
-        $patient = Patient::where('id', $id)->first();
-    
-        return view("patients/recipes", [
-           'doctorName'=> $patient->doctor,
-           'title' => 'Patient:' . $patient->fullname,
-           'app_title' => $patient->fullname,
-           'recipes' => Recipe::all()->where('patient_id', $id),
-        ]);
-    }
 }

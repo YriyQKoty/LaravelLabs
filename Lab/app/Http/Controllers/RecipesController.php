@@ -11,6 +11,10 @@ use App\Models\Recipe;
 class RecipesController extends Controller
 {
     
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function create($id) {
         return view("recipes/create", [
             'patient_id' => $id,

@@ -4,7 +4,6 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\RecipesController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +47,7 @@ Route::patch('/recipes/index/{id}', [RecipesController::class, 'update']);
 Route::delete('/recipes/index/{id}/delete', [RecipesController::class, 'destroy']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

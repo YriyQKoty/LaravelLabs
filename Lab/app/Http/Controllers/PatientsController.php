@@ -12,6 +12,11 @@ use App\Models\Recipe;
 
 class PatientsController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function patients() {
         $patients = Patient::all()->sortBy('id');
 

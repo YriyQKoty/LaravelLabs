@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <style>
+        .topnav-right {
+             float: right;
+        }
+    </style>
     
     <title>@yield ("app-title")</title>
   
@@ -25,6 +29,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href=""><h3>Medicine recipes</h3></a>
 
+   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
              <li class="nav-item @yield('nav-home-active')">
@@ -38,6 +43,35 @@
              </li>
         </ul>
     </div>
+    @guest
+    <ul class = "navbar-nav navbar-right topnav-right">
+        <li>
+            <a class="nav-link h5" href="{{ route('login') }}">Login</a>
+        </li>
+        @if(Route::has('register'))
+        <li>
+            <a class="nav-link h5" href="{{ route('register') }}">Register</a>
+        </li>
+        @endif
+    </ul>
+    @else
+         <ul class = "navbar-nav navbar-right topnav-right">
+            <li>
+                <a class ="nav-link">{{ Auth::user()->name }}</a>
+             </li>
+             <li>
+             <a class = "nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+            </a>
+
+            <form id='logout-form' action="{{ route('logout') }}" method="POST">
+                     @csrf
+            </form>
+            </li>
+        </ul>
+    @endguest
     </nav>
 
     <div class = "container main-part">

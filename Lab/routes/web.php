@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\RecipesController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/admin', [PageController::class, 'admin']); 
 
 Route::get('/', [PageController::class, 'home']);
 
@@ -51,3 +54,4 @@ Route::delete('/recipes/index/{id}/delete', [RecipesController::class, 'destroy'
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

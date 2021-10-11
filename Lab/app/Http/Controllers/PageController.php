@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Patient;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
 {
@@ -16,5 +17,14 @@ class PageController extends Controller
         return view('about');
     }
 
+    public function admin() {
+        if (Gate::allows('admin-panel')) {
+            return view('admin/admin');
+        }
+        else {
+            $this->home();
+        }
+        
+    }
     
 }

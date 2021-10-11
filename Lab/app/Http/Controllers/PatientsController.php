@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Model\Rules;
-
-use DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Recipe;
 
@@ -27,19 +26,18 @@ class PatientsController extends Controller
     }
 
     public function create() {
-        return view("patients/create");
+            return view("patients/create");    
     }
 
     public function store() {
-        
-        $data = RulesController::onValidate(RulesController::getRules()['patientRules']);
+            $data = RulesController::onValidate(RulesController::getRules()['patientRules']);
 
-        Patient::create([
-            'fullname' => $data['fullname'],
-            'doctor' => $data['doctor']
-        ]);
-
-        return redirect("/patients/index");
+            Patient::create([
+                'fullname' => $data['fullname'],
+                'doctor' => $data['doctor']
+            ]);
+    
+            return redirect("/patients/index");
     }
 
     public function edit($id) {
@@ -51,6 +49,7 @@ class PatientsController extends Controller
     }
 
     public function update($id) {
+        
         $patient = Patient::find($id);
 
         $data = RulesController::onValidate(RulesController::getRules()['patientRules']);
@@ -64,10 +63,11 @@ class PatientsController extends Controller
     }
 
     public function destroy($id) {
-        $patient = Patient::find($id);
+
+             $patient = Patient::find($id);
         
-        $patient->delete();
-        return redirect("patients/index");
+            $patient->delete();
+            return redirect("patients/index"); 
     }
 
     public function patientsJson() {

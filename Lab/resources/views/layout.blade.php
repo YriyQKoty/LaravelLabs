@@ -38,6 +38,11 @@
              <li class="nav-item @yield('nav-recip-active')"> 
                  <a class="nav-link h5" href="/patients/index">Patients</a>
              </li>
+             @can('admin-panel')
+             <li class="nav-item @yield('nav-admin-active')"> 
+                 <a class="nav-link h5" href="/admin">Admin</a>
+             </li>
+             @endcan
             <li class="nav-item @yield('nav-about-active')">
                  <a class="nav-link h5" href="/about">About</a>
              </li>

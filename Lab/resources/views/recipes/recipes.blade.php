@@ -9,7 +9,9 @@
         <div class = "col">
             <h2>Doctor: <?php echo $doctor ?></h2>
             <div class = "mt-5">
-                <a href="/recipes/create/<?php echo $patient_id ?>" style = "margin-bottom: 10px; font-size: 16pt; font-weight: bold" class="btn btn-outline-dark">Add recipe</a>
+                @if (Auth::user()->can('update', Patient::class))
+                     <a href="/recipes/create/<?php echo $patient_id ?>" style = "margin-bottom: 10px; font-size: 16pt; font-weight: bold" class="btn btn-outline-dark">Add recipe</a>
+                @endif
                 <table class="table table-striped table-dark ">
                     <thead>
                         <tr>
@@ -17,7 +19,9 @@
                         <th scope="col">Description</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Type</th>
+                        @if (Auth::user()->can('update', Patient::class))
                         <th scope="col" colspan="2" class="text-center">Management</th>
+                        @endif
                         </tr>
                     </thead>
 
@@ -29,8 +33,10 @@
                                 <td><?php echo $row->description; ?></td>
                                 <td><?php echo $row->amount; ?></td>
                                 <td><?php echo $row->type; ?></td>
+                                @if (Auth::user()->can('update', Patient::class))
                                 <td class="text-center"> <a href="/recipes/index/{{ $row->id }}/edit" class = "btn btn-outline-primary">Edit</a></td>
                                 <th class="text-center"> <a id="{{ $row->id }}" name="{{ $row->description }}" class = "btn btn-outline-danger">Delete</a></td>
+                                @endif
                             </tr>
                         <?php endforeach ?>
                     </tbody>

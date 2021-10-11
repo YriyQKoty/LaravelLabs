@@ -17,14 +17,5 @@ class PageController extends Controller
         return view('about');
     }
 
-    public function admin() {
-        if (Gate::allows('admin-panel')) {
-            return view('admin/admin');
-        }
-        else {
-            $this->home();
-        }
-        
-    }
-    
+ 
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\RecipesController;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/admin', [PageController::class, 'admin']); 
+Route::get('/admin', [AdminController::class, 'admin']); 
+Route::patch('/admin', [AdminController::class, 'rights'])->middleware('auth');
 
 Route::get('/', [PageController::class, 'home']);
 

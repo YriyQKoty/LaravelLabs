@@ -17,9 +17,10 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Fullname</th>
-                        <th scope="col">Doctor</th>
+                        <th scope="col" >Fullname</th>
+                        <th scope="col" >Doctor</th>
                         <th scope="col">Recipes</th>
+                        <th scope="col" class="text-center">Count</th>
                         <th scope="col" colspan="2" class="text-center">Management</th>
                 
                         </tr>
@@ -33,6 +34,7 @@
                                 <td name="{{ $row->fullname }}"><?php echo $row->fullname; ?></td>
                                 <td><?php echo $row->doctor; ?></td>
                                 <td> <a href="/recipes/{{ $row->id }}" class = "btn btn-outline-success">Show</a></td>
+                                <td  class="text-center"><?php echo $row->recipes->count(); ?></td>
                                 <td class="text-center"> <a href="/patients/index/{{ $row->id }}/edit" class = "btn btn-outline-primary">Edit</a></td>
                                 <th class="text-center"> <a id="{{ $row->id }}" name="{{ $row->fullname }}" class = "btn btn-outline-danger">Delete</a></td>
                                 <?php  $index++ ?>

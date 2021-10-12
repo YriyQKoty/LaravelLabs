@@ -43,6 +43,8 @@ Route::get('/patients/json', [PatientsController::class, 'patientsJson']);
 
 Route::get('/recipes/{id}', [RecipesController::class, 'showPatientRecipes']);
 
+Route::post('/recipes2/{id}', [RecipesController::class, 'showPatientRecipes2']);
+
 Route::post('/recipes/{id}', [RecipesController::class, 'store']);
 Route::get('/recipes/create/{id}', [RecipesController::class, 'create']);
 

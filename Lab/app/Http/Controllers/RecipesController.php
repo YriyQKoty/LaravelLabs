@@ -77,8 +77,28 @@ class RecipesController extends Controller
            'doctor'=> $patient->doctor,
            'title' => 'Patient:' . $patient->fullname,
            'app_title' => $patient->fullname,
+           'recipes' => Recipe::all()->where('patient_id', $id)->take(2),
+           'patient_id' => $id
+        ]);
+    }
+
+    public function showPatientRecipes2($id) {
+      
+        $checked = request()->all()['showAll'];
+      
+        if ($checked == 'off') {
+              return  $this->showPatientRecipes($id);
+        }
+        else {
+        $patient = Patient::where('id', $id)->first();
+    
+        return view("recipes/recipes", [
+           'doctor'=> $patient->doctor,
+           'title' => 'Patient:' . $patient->fullname,
+           'app_title' => $patient->fullname,
            'recipes' => Recipe::all()->where('patient_id', $id),
            'patient_id' => $id
         ]);
+    }
     }
 }
